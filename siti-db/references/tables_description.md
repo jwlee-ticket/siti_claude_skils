@@ -49,11 +49,11 @@ SQL 작성 전 이 문서를 참고해 올바른 테이블을 선택한다.
 ### 티켓북
 | 테이블명 | 설명 |
 |---------|------|
-| `ticket` | 티켓 정보 |
-| `ticket_book` | 티켓북 (관람 기록) |
-| `ticket_book_image` | 티켓북 이미지 |
-| `ticket_book_media` | 티켓북 미디어 |
-| `ticket_book_performance_mapping` | 티켓북-공연 매핑 |
+| `ticket` | **티켓 정보 — 티켓 관련 조회는 이 테이블을 사용** |
+| `ticket_book` | ⚠️ 현재 미사용 — 조회하지 말 것 |
+| `ticket_book_image` | ⚠️ 현재 미사용 |
+| `ticket_book_media` | ⚠️ 현재 미사용 |
+| `ticket_book_performance_mapping` | ⚠️ 현재 미사용 |
 | `ticket_cast` | 티켓별 출연진 |
 | `ticket_parsing_log` | 티켓 파싱 로그 |
 | `ticket_status_log` | 티켓 상태 변경 로그 |
