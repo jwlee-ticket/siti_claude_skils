@@ -1,0 +1,4190 @@
+[
+  {
+    "schema": "kopis",
+    "table": "facility",
+    "columns": [
+      {
+        "name": "mt10id",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "fcltynm",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "mt13cnt",
+        "type": "smallint",
+        "nullable": true
+      },
+      {
+        "name": "fcltychartr",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "opende",
+        "type": "smallint",
+        "nullable": true
+      },
+      {
+        "name": "seatscale",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "telno",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "relateurl",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "adres",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "la",
+        "type": "double precision",
+        "nullable": true
+      },
+      {
+        "name": "lo",
+        "type": "double precision",
+        "nullable": true
+      },
+      {
+        "name": "restaurant",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "cafe",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "store",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "nolibang",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "suyu",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "parkbarrier",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "restbarrier",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "runwbarrier",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "elevbarrier",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "parkinglot",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "CURRENT_TIMESTAMP"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "schema": "kopis",
+    "table": "facility_list",
+    "columns": [
+      {
+        "name": "mt10id",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "fcltynm",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "mt13cnt",
+        "type": "smallint",
+        "nullable": true
+      },
+      {
+        "name": "fcltychartr",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "sidonm",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "gugunnm",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "opende",
+        "type": "smallint",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "CURRENT_TIMESTAMP"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "schema": "kopis",
+    "table": "kopis_ingest_history",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('kopis.kopis_ingest_history_id_seq'::regclass)"
+      },
+      {
+        "name": "source_table",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "source_id",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "action_type",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "source_hash",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "hash_version",
+        "type": "integer",
+        "nullable": false,
+        "default": "1"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      }
+    ]
+  },
+  {
+    "schema": "kopis",
+    "table": "marker",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('kopis.marker_id_seq'::regclass)"
+      },
+      {
+        "name": "task_name",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "task_params",
+        "type": "jsonb",
+        "nullable": false
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "processed_count",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "processed_page",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "message",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
+        "name": "finished_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "CURRENT_TIMESTAMP"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "schema": "kopis",
+    "table": "performance",
+    "columns": [
+      {
+        "name": "mt20id",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "prfnm",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "prfpdfrom",
+        "type": "date",
+        "nullable": true
+      },
+      {
+        "name": "prfpdto",
+        "type": "date",
+        "nullable": true
+      },
+      {
+        "name": "fcltynm",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "mt10id",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "prfcast",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "prfcrew",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "prfruntime",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "prfage",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "entrpsnm",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "entrpsnmP",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "entrpsnmA",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "entrpsnmH",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "entrpsnmS",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "pcseguidance",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "poster",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "sty",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "area",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "genrenm",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "openrun",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "visit",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "child",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "daehakro",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "festival",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "musicallicense",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "musicalcreate",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "updatedate",
+        "type": "timestamp without time zone",
+        "nullable": true
+      },
+      {
+        "name": "prfstate",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "dtguidance",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "CURRENT_TIMESTAMP"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "schema": "kopis",
+    "table": "performance_list",
+    "columns": [
+      {
+        "name": "mt20id",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "prfnm",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "prfpdfrom",
+        "type": "date",
+        "nullable": true
+      },
+      {
+        "name": "prfpdto",
+        "type": "date",
+        "nullable": true
+      },
+      {
+        "name": "fcltynm",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "poster",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "area",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "genrenm",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "openrun",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "prfstate",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "CURRENT_TIMESTAMP"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "schema": "kopis",
+    "table": "performance_place",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('kopis.performance_place_id_seq'::regclass)"
+      },
+      {
+        "name": "mt10id",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "prfplcnm",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "mt13id",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "seatscale",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "stageorchat",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "stagepracat",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "stagedresat",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "stageoutdrat",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "disabledseatscale",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "stagearea",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "CURRENT_TIMESTAMP"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "schema": "kopis",
+    "table": "relate",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('kopis.relate_id_seq'::regclass)"
+      },
+      {
+        "name": "mt20id",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "relatenm",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "relateurl",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "CURRENT_TIMESTAMP"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "schema": "kopis",
+    "table": "transformation_progress",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('kopis.transformation_progress_id_seq'::regclass)"
+      },
+      {
+        "name": "source_table",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "source_id",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "target_table",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "target_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "action_type",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "source_hash",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "hash_version",
+        "type": "integer",
+        "nullable": true,
+        "default": "1"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "booking_site",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('booking_site_id_seq'::regclass)"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "is_active",
+        "type": "boolean",
+        "nullable": true,
+        "default": "true"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "renew_name",
+        "type": "text",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "cast",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('cast_id_seq'::regclass)"
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "clean_name",
+        "type": "text",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "cast_user",
+    "columns": [
+      {
+        "name": "user_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "cast_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "profile_media_id",
+        "type": "bigint",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "channel",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('channel_id_seq'::regclass)"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "channel_entity",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('channel_entity_id_seq'::regclass)"
+      },
+      {
+        "name": "channel_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "entity_type",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "entity_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "now()"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "channel_read_state",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('channel_read_state_id_seq'::regclass)"
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "channel_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "last_seen_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "comment",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('comment_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "content",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "post_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "parent_id",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "like_count",
+        "type": "integer",
+        "nullable": false,
+        "default": "0"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "comment_closure",
+    "columns": [
+      {
+        "name": "parent_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "child_id",
+        "type": "integer",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "comment_reaction",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('comment_reaction_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "comment_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "type",
+        "type": "character varying",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "comment_report",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('comment_report_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "comment_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "reason_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "company",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('company_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "logo_url",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "business_number",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "company_name",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "representative_name",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "address",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "detailed_address",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "contact_phone_number",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "contact_email",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "is_active",
+        "type": "boolean",
+        "nullable": true,
+        "default": "false"
+      },
+      {
+        "name": "type",
+        "type": "character varying",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "daily_content",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('daily_content_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "genre",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "content_type",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "production_title",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "line",
+        "type": "text",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "folder_production",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('folder_production_id_seq'::regclass)"
+      },
+      {
+        "name": "folder_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "production_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "order_index",
+        "type": "integer",
+        "nullable": false,
+        "default": "0"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone",
+        "nullable": false,
+        "default": "now()"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "folders",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone",
+        "nullable": true,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp without time zone",
+        "nullable": true,
+        "default": "now()"
+      },
+      {
+        "name": "is_group_view_count",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "genre",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('genre_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "inquiry",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('inquiry_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "type",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "content",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "reply_email",
+        "type": "character varying",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "inquiry_media",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('inquiry_media_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "inquiry_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "type",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "url",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "origin_name",
+        "type": "character varying",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "interaction",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('interaction_id_seq'::regclass)"
+      },
+      {
+        "name": "user_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "target_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "target_type",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "interaction_type",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "metadata",
+        "type": "json",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "media",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('media_id_seq'::regclass)"
+      },
+      {
+        "name": "folder_id",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "user_id",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "url",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "mime_type",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "target_type",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "metadata",
+        "type": "json",
+        "nullable": true
+      },
+      {
+        "name": "capacity",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "s3_key",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "filename",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "target_id",
+        "type": "bigint",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "media_tag",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('media_tag_id_seq'::regclass)"
+      },
+      {
+        "name": "media_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "tag_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "migrations",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('migrations_id_seq'::regclass)"
+      },
+      {
+        "name": "timestamp",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "notice",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('notice_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "title",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "content",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "publish_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
+        "name": "failure_reason",
+        "type": "text",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "notification",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('notification_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "target_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "title",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "body",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "image_url",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "is_read",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      },
+      {
+        "name": "order_id",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "type",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "order_cancel_id",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "play_id",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "sender_id",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "message_template",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "data",
+        "type": "jsonb",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "notifications",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('notifications_id_seq'::regclass)"
+      },
+      {
+        "name": "user_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "code",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "notify_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
+        "name": "content",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "is_sent",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "now()"
+      },
+      {
+        "name": "is_read",
+        "type": "boolean",
+        "nullable": true,
+        "default": "false"
+      },
+      {
+        "name": "sent_at",
+        "type": "timestamp with time zone",
+        "nullable": true,
+        "default": "now()"
+      },
+      {
+        "name": "metadata",
+        "type": "json",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "performance",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('performance_id_seq'::regclass)"
+      },
+      {
+        "name": "production_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "theater_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "date",
+        "type": "date",
+        "nullable": false
+      },
+      {
+        "name": "start_time",
+        "type": "time without time zone",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "source_key",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "is_special",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "performance_cast",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('performance_cast_id_seq'::regclass)"
+      },
+      {
+        "name": "performance_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "cast_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "character_name",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "role_type",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "order_index",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "data_source",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "performance_user",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('production_user_id_seq'::regclass)"
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "performance_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "custom_poster_media_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "post",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('post_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "content",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "allow_comments",
+        "type": "boolean",
+        "nullable": false,
+        "default": "true"
+      },
+      {
+        "name": "visibility",
+        "type": "character varying",
+        "nullable": false,
+        "default": "'PUBLIC'::character varying"
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "topic_id",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "comment_count",
+        "type": "integer",
+        "nullable": false,
+        "default": "0"
+      },
+      {
+        "name": "like_count",
+        "type": "integer",
+        "nullable": false,
+        "default": "0"
+      },
+      {
+        "name": "view_count",
+        "type": "integer",
+        "nullable": false,
+        "default": "0"
+      },
+      {
+        "name": "share_count",
+        "type": "integer",
+        "nullable": false,
+        "default": "0"
+      },
+      {
+        "name": "is_pinned",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "rating",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "is_notification_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "post_media",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('post_media_id_seq'::regclass)"
+      },
+      {
+        "name": "mime_type",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "url",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "post_id",
+        "type": "integer",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "post_reaction",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('post_reaction_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "post_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "type",
+        "type": "character varying",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "post_report",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('post_report_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "post_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "reason_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "post_views",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('post_views_id_seq'::regclass)"
+      },
+      {
+        "name": "post_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "production",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('production_id_seq'::regclass)"
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "genre",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "poster_media_id",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "opening_date",
+        "type": "date",
+        "nullable": false
+      },
+      {
+        "name": "closing_date",
+        "type": "date",
+        "nullable": false
+      },
+      {
+        "name": "running_time",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "theater_id",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "source_key",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "title_clean",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "title_canonical",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "title_location",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "title_suffix",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "title_canonical_compact",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "title_sort_group",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "is_child",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      },
+      {
+        "name": "genre_renew",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "production_booking_site",
+    "columns": [
+      {
+        "name": "production_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "booking_site_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "production_booking_site_url",
+    "columns": [
+      {
+        "name": "production_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "booking_site_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "url",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "production_edit_request",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('production_edit_request_id_seq'::regclass)"
+      },
+      {
+        "name": "user_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "production_id",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "performance_id",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "context",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "nullable": false,
+        "default": "'OPEN'::character varying"
+      },
+      {
+        "name": "slack_sent",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      },
+      {
+        "name": "slack_sent_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "reason_codes",
+        "type": "jsonb",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "production_seat_price",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('production_seat_price_id_seq'::regclass)"
+      },
+      {
+        "name": "production_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "seat_grade",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "price",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "reason",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('reason_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "label",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "purpose",
+        "type": "character varying",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "review",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('review_id_seq'::regclass)"
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "review_type",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "target_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "score",
+        "type": "numeric",
+        "nullable": true
+      },
+      {
+        "name": "content",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "review_media",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('review_media_id_seq'::regclass)"
+      },
+      {
+        "name": "review_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "media_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "order_index",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "schema_migrations",
+    "columns": [
+      {
+        "name": "version",
+        "type": "character varying",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "search_history",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('search_history_id_seq'::regclass)"
+      },
+      {
+        "name": "user_id",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "keyword",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "seat",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('seat_id_seq'::regclass)"
+      },
+      {
+        "name": "theater_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "floor",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "section",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "row",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "number",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "verification_count",
+        "type": "integer",
+        "nullable": true,
+        "default": "1"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "sub_genre",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('sub_genre_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "genre_id",
+        "type": "integer",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "tag",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('tag_id_seq'::regclass)"
+      },
+      {
+        "name": "user_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "production_id",
+        "type": "bigint",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "theater",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('theater_id_seq'::regclass)"
+      },
+      {
+        "name": "venue_id",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "capacity",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "source_key",
+        "type": "character varying",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "ticket",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('ticket_id_seq'::regclass)"
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "performance_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "booking_site_id",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "seat_id",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "seat_grade",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "price",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "ticket_type",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "is_transfer",
+        "type": "boolean",
+        "nullable": true,
+        "default": "false"
+      },
+      {
+        "name": "booking_receipt_media_id",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "public_type",
+        "type": "character varying",
+        "nullable": true,
+        "default": "'private'::character varying"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "ticket_book",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('ticket_book_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "play_date",
+        "type": "date",
+        "nullable": false
+      },
+      {
+        "name": "play_time",
+        "type": "time without time zone",
+        "nullable": true
+      },
+      {
+        "name": "seat_name",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "seat_grade_name",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "seat_price",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "rating",
+        "type": "numeric",
+        "nullable": true
+      },
+      {
+        "name": "review",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "topic_play_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "is_pinned",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "ticket_book_image",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('ticket_book_image_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "ticket_book_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "url",
+        "type": "character varying",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "ticket_book_media",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('ticket_book_media_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "mime_type",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "url",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "ticket_book_id",
+        "type": "integer",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "ticket_book_performance_mapping",
+    "columns": [
+      {
+        "name": "ticket_book_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "performance_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp without time zone",
+        "nullable": true,
+        "default": "now()"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "ticket_cast",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('ticket_cast_id_seq'::regclass)"
+      },
+      {
+        "name": "ticket_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "cast_id",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "cast_name",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "character_name",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "is_custom",
+        "type": "boolean",
+        "nullable": true,
+        "default": "false"
+      },
+      {
+        "name": "order_index",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "ticket_parsing_log",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('ticket_parsing_log_id_seq'::regclass)"
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "request_timestamp",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
+        "name": "html_input",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "html_size_bytes",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "input_tokens",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "output_tokens",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "response_timestamp",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "response_time_ms",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "model",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "parsed_data",
+        "type": "jsonb",
+        "nullable": true
+      },
+      {
+        "name": "error_message",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "performance_id",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "matching_score",
+        "type": "numeric",
+        "nullable": true
+      },
+      {
+        "name": "ticket_id",
+        "type": "bigint",
+        "nullable": true
+      },
+      {
+        "name": "ticket_creation_status",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "ticket_status_log",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('ticket_status_log_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "ticket_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "from_payment_status",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "to_payment_status",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "from_issuance_status",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "to_issuance_status",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "changed_by",
+        "type": "character varying",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "ticket_verification",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('ticket_verification_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "image_url",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "rejected_reason",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "ticket_book_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "is_read_result",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "topic",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('topic_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "image_url",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "post_count",
+        "type": "integer",
+        "nullable": false,
+        "default": "0"
+      },
+      {
+        "name": "genre_id",
+        "type": "integer",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "topic_follow",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('topic_follow_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "topic_id",
+        "type": "integer",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "topic_play",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('topic_play_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "play_name",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "place_name",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "topic_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "image_url",
+        "type": "character varying",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "user",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('user_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "uuid",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "profile_image_url",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "nickname",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "is_marketing_agreed",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      },
+      {
+        "name": "marketing_agreed_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "is_auto_play_video_on_wifi_only",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      },
+      {
+        "name": "username",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "bio",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "is_newsletter_alert_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "true"
+      },
+      {
+        "name": "is_post_like_alert_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "true"
+      },
+      {
+        "name": "is_post_comment_alert_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "true"
+      },
+      {
+        "name": "is_comment_like_alert_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "true"
+      },
+      {
+        "name": "is_comment_reply_alert_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "true"
+      },
+      {
+        "name": "is_follow_request_alert_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "true"
+      },
+      {
+        "name": "is_following_user_post_alert_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "true"
+      },
+      {
+        "name": "is_following_user_ticketbook_alert_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "true"
+      },
+      {
+        "name": "is_following_topic_post_alert_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "true"
+      },
+      {
+        "name": "is_ticket_verification_alert_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "true"
+      },
+      {
+        "name": "is_ticket_verification_suggest_alert_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "true"
+      },
+      {
+        "name": "theme",
+        "type": "character varying",
+        "nullable": false,
+        "default": "'AUTO'::character varying"
+      },
+      {
+        "name": "is_notification_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      },
+      {
+        "name": "is_play_day_notification_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      },
+      {
+        "name": "is_play_entry_notification_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      },
+      {
+        "name": "is_ticket_book_after_play_notification_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      },
+      {
+        "name": "is_play_open_notification_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      },
+      {
+        "name": "is_casting_update_notification_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      },
+      {
+        "name": "is_related_content_upload_notification_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      },
+      {
+        "name": "is_notice_notification_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      },
+      {
+        "name": "is_coupon_notification_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      },
+      {
+        "name": "is_event_notification_enabled",
+        "type": "boolean",
+        "nullable": false,
+        "default": "false"
+      },
+      {
+        "name": "last_access_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "nullable": false,
+        "default": "'ACTIVE'::character varying"
+      },
+      {
+        "name": "nickname_change_count",
+        "type": "integer",
+        "nullable": false,
+        "default": "0"
+      },
+      {
+        "name": "nickname_change_window_started_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "user_auth_email",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('user_auth_email_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "email",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "password",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "user_auth_social",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('user_auth_social_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "provider",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "provider_user_id",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "email",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "profile_image_url",
+        "type": "character varying",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "user_block",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('user_block_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "target_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "user_delete_reason",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('user_delete_reason_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "reason_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "reason_detail",
+        "type": "character varying",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "user_fcm_token",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('user_fcm_token_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "fcm_token",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "device_type",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "device_model",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "is_active",
+        "type": "boolean",
+        "nullable": false,
+        "default": "true"
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "user_follow",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('user_follow_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "target_id",
+        "type": "integer",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "user_hidden_comments",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('user_hidden_comments_id_seq'::regclass)"
+      },
+      {
+        "name": "user_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "comment_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "user_hidden_posts",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('user_hidden_posts_id_seq'::regclass)"
+      },
+      {
+        "name": "user_id",
+        "type": "bigint",
+        "nullable": false
+      },
+      {
+        "name": "post_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "user_identity_verification_history",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('user_identity_verification_history_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "expired_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "user_pass_identity",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('user_pass_identity_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "birthdate",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "sex",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "ntv_frnr",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "di",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "ci",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "tel_com",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "tel_no",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "user_report",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('user_report_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "nullable": false
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "target_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "reason_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "user_suspension_history",
+    "columns": [
+      {
+        "name": "id",
+        "type": "integer",
+        "nullable": false,
+        "default": "nextval('user_suspension_history_id_seq'::regclass)"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "user_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "reason_id",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "suspended_days",
+        "type": "integer",
+        "nullable": true
+      },
+      {
+        "name": "revoked_at",
+        "type": "timestamp without time zone",
+        "nullable": true
+      }
+    ]
+  },
+  {
+    "schema": "public",
+    "table": "venue",
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "nullable": false,
+        "default": "nextval('venue_id_seq'::regclass)"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "address",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false,
+        "default": "now()"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "nullable": true
+      },
+      {
+        "name": "source_key",
+        "type": "character varying",
+        "nullable": true
+      },
+      {
+        "name": "name_clean",
+        "type": "text",
+        "nullable": true
+      }
+    ]
+  }
+]
