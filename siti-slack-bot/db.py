@@ -17,7 +17,11 @@ FORBIDDEN_KEYWORDS = re.compile(
 
 def assert_read_only(sql: str):
     stripped = sql.strip()
-    if not re.match(r"^\s*(WITH\s+.+\s+)?SELECT\b", stripped, re.IGNORECASE | re.DOTALL):
+    # SQL 주석 제거 후 검사 (-- 한줄 주석, /* */ 블록 주석)
+    stripped_no_comment = re.sub(r"--[^\n]*", "", stripped)
+    stripped_no_comment = re.sub(r"/\*.*?\*/", "", stripped_no_comment, flags=re.DOTALL)
+    stripped_no_comment = stripped_no_comment.strip()
+    if not re.match(r"^\s*(WITH\b[\s\S]+?SELECT\b|SELECT\b)", stripped_no_comment, re.IGNORECASE):
         raise ValueError("SELECT (또는 WITH ... SELECT) 쿼리만 허용됩니다.")
 
     match = FORBIDDEN_KEYWORDS.search(stripped)
