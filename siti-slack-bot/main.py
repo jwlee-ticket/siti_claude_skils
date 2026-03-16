@@ -35,7 +35,7 @@ def handle_mention(event, say, client):
         return
 
     # 처리 중 메시지
-    say(text="🔍 얼른 데이터를 찾아올게요!", thread_ts=thread_ts)
+    say(text="🔎 빠르게 데이터를 찾아올게요!", thread_ts=thread_ts)
 
     try:
         from agent import ask
@@ -62,7 +62,7 @@ def handle_dm(event, say):
 
     try:
         from agent import ask
-        say(text="🔍 얼른 데이터를 찾아올게요!")
+        say(text="🔎 빠르게 데이터를 찾아올게요!")
         answer = ask(question)
         say(text=answer)
     except Exception as e:
