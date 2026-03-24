@@ -1,6 +1,6 @@
 ---
 name: siti-db
-description: 시티(Siti) 플랫폼의 PostgreSQL DB에서 데이터를 조회하는 스킬. "유저 몇 명이야?", "최근 가입한 사람 보여줘", "이번 달 공연 목록 알려줘", "리뷰 많은 공연 순으로 보여줘", "티켓 현황 알려줘" 처럼 데이터 조회 요청이 오면 반드시 이 스킬을 사용해야 한다. SELECT 조회만 허용되며 데이터 수정은 절대 불가능하다.
+description: 시티(Siti) 플랫폼의 PostgreSQL DB에서 데이터를 조회하는 스킬. "유저 몇 명이야?", "최근 가입한 사람 보여줘", "이번 달 공연 목록 알려줘", "리뷰 많은 공연 순으로 보여줘", "티켓 현황 알려줘" 처럼 데이터 조회 요청이 오면 반드시 이 스킬을 사용해야 한다. 시티 DB 데이터와 마케팅 전략(초대권리스트, 콘텐츠리스트, 마케팅 일정)을 함께 보고 싶을 때도 이 스킬을 사용한다. SELECT 조회만 허용되며 데이터 수정은 절대 불가능하다.
 ---
 
 # 시티 DB 조회 스킬
@@ -60,3 +60,34 @@ python scripts/query.py "SELECT id, email FROM public.user" --format json
 | 금지 키워드 감지 | SELECT 외 쿼리 시도 | SELECT로만 재작성 |
 | 컬럼명 오류 | 잘못된 컬럼명 | `schemas/tables.json` 재확인 |
 | 접속 타임아웃 | 네트워크 문제 | 재시도 |
+
+---
+
+## 마케팅 데이터 (Google Sheets 연동)
+
+시티 DB 데이터와 함께 마케팅 전략 데이터를 조회할 수 있다.
+자세한 내용은 **`references/sheets_description.md`** 참고.
+
+```bash
+# 초대권 이벤트 현황
+python3 /Users/jwlee/.claude/skills/siti-db/scripts/gsheets.py 초대권리스트
+
+# SNS 콘텐츠 업로드 일정
+python3 /Users/jwlee/.claude/skills/siti-db/scripts/gsheets.py 콘텐츠리스트
+
+# 마케팅 플랜 전체 일정
+python3 /Users/jwlee/.claude/skills/siti-db/scripts/gsheets.py 일정
+
+# 키워드 필터링
+python3 /Users/jwlee/.claude/skills/siti-db/scripts/gsheets.py 초대권리스트 --filter 완료
+```
+
+### 함께 사용하는 예시
+
+**"초대권 이벤트 공연 중 시티에서 티켓 등록된 건 얼마야?"**
+1. `gsheets.py 초대권리스트` → 공연명 목록 확인
+2. siti DB `ticket` 테이블에서 해당 공연 조회
+
+**"3월 마케팅 활동과 가입자 추이를 같이 보여줘"**
+1. siti DB: 일별 가입자 수 조회
+2. `gsheets.py 일정 --filter 3월` → 해당 기간 마케팅 활동 조회

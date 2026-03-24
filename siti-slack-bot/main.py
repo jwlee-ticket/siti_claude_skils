@@ -2,12 +2,14 @@
 
 import logging
 import os
+import time
 
 from pathlib import Path
 
 from dotenv import load_dotenv
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
+from usage_logger import log_usage
 
 load_dotenv(Path(__file__).parent / ".env", override=True)
 
@@ -37,13 +39,25 @@ def handle_mention(event, say, client):
     # 처리 중 메시지
     say(text="🔎 빠르게 데이터를 찾아올게요!", thread_ts=thread_ts)
 
+    start = time.time()
     try:
         from agent import ask
         answer = ask(question)
         say(text=answer, thread_ts=thread_ts)
     except Exception as e:
         logger.exception("에이전트 오류")
-        say(text=f"❌ 오류가 발생했습니다: {str(e)}", thread_ts=thread_ts)
+        answer = f"❌ 오류가 발생했습니다: {str(e)}"
+        say(text=answer, thread_ts=thread_ts)
+    finally:
+        duration_ms = int((time.time() - start) * 1000)
+        log_usage(
+            user_id=user,
+            channel=channel,
+            channel_type="channel",
+            question=question,
+            answer=answer,
+            duration_ms=duration_ms,
+        )
 
 
 @app.event("message")
@@ -60,6 +74,10 @@ def handle_dm(event, say):
     if not question:
         return
 
+    user = event.get("user", "")
+    channel = event.get("channel", "")
+
+    start = time.time()
     try:
         from agent import ask
         say(text="🔎 빠르게 데이터를 찾아올게요!")
@@ -67,7 +85,18 @@ def handle_dm(event, say):
         say(text=answer)
     except Exception as e:
         logger.exception("에이전트 오류")
-        say(text=f"❌ 오류가 발생했습니다: {str(e)}")
+        answer = f"❌ 오류가 발생했습니다: {str(e)}"
+        say(text=answer)
+    finally:
+        duration_ms = int((time.time() - start) * 1000)
+        log_usage(
+            user_id=user,
+            channel=channel,
+            channel_type="dm",
+            question=question,
+            answer=answer,
+            duration_ms=duration_ms,
+        )
 
 
 if __name__ == "__main__":
