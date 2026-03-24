@@ -2,6 +2,7 @@
 
 import json
 import os
+import subprocess
 from pathlib import Path
 
 import anthropic
@@ -96,7 +97,24 @@ SELECT 쿼리만 사용합니다. INSERT, UPDATE, DELETE, DROP 등은 절대 사
 - deleted_at IS NULL 조건으로 삭제된 데이터 제외
 - 집계 쿼리는 LIMIT 불필요, 그 외는 자동으로 LIMIT 100 적용
 - 날짜 기준: CURRENT_DATE, NOW() 사용
+
+## 마케팅 데이터 (Google Sheets)
+
+`query_marketing_sheets` 툴로 시티 마케팅 전략 데이터를 조회할 수 있습니다.
+시티 DB 데이터와 함께 사용하면 마케팅 효과 분석이 가능합니다.
+
+### 시트 종류
+- `초대권리스트` — 공연별 시티 셀렉션 이벤트 현황 (공연명, 이벤트 시작/종료일, 관람일, 좌석등급, 당첨인원, 티켓 수급 상황)
+- `콘텐츠리스트` — SNS 콘텐츠 업로드 일정 (날짜, 채널, 전략 구분, 내용)
+- `일정` — 2025-2026 전체 마케팅 플랜 (주차별 KPI, MAIN ISSUE, 채널별 콘텐츠, 프로모션/이벤트)
+
+### 함께 사용하는 예시
+- "시티 셀렉션 이벤트 목록 보여줘" → `초대권리스트` 조회
+- "3월 마케팅 일정과 가입자 추이 같이 보여줘" → `일정` + DB 조회
+- "셀렉션 #2 기간 동안 어떤 공연이 많이 등록됐어?" → `초대권리스트`로 날짜 확인 후 DB 조회
 """
+
+GSHEETS_SCRIPT = Path(__file__).parent.parent / "siti-db" / "scripts" / "gsheets.py"
 
 TOOLS = [
     {
@@ -112,7 +130,26 @@ TOOLS = [
             },
             "required": ["sql"],
         },
-    }
+    },
+    {
+        "name": "query_marketing_sheets",
+        "description": "시티 마케팅 Google Sheets 데이터를 조회합니다. 초대권리스트(시티 셀렉션 이벤트), 콘텐츠리스트(SNS 콘텐츠 일정), 일정(전체 마케팅 플랜)을 조회할 수 있습니다.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "sheet": {
+                    "type": "string",
+                    "enum": ["초대권리스트", "콘텐츠리스트", "일정"],
+                    "description": "조회할 시트명",
+                },
+                "filter": {
+                    "type": "string",
+                    "description": "행 필터링 키워드 (선택). 예: '완료', '3월', '셀렉션'",
+                },
+            },
+            "required": ["sheet"],
+        },
+    },
 ]
 
 
@@ -152,6 +189,28 @@ def ask(question: str) -> str:
                         content = json.dumps(result["rows"], ensure_ascii=False, default=str)
                 else:
                     content = f"오류: {result['error']}"
+
+                tool_results.append({
+                    "type": "tool_result",
+                    "tool_use_id": block.id,
+                    "content": content,
+                })
+
+            elif block.name == "query_marketing_sheets":
+                sheet = block.input.get("sheet", "")
+                filter_kw = block.input.get("filter", "")
+
+                cmd = ["python3", str(GSHEETS_SCRIPT), sheet]
+                if filter_kw:
+                    cmd += ["--filter", filter_kw]
+
+                try:
+                    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=20)
+                    content = proc.stdout if proc.stdout else f"오류: {proc.stderr}"
+                except subprocess.TimeoutExpired:
+                    content = "오류: Google Sheets 조회 타임아웃"
+                except Exception as e:
+                    content = f"오류: {e}"
 
                 tool_results.append({
                     "type": "tool_result",
